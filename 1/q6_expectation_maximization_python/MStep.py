@@ -4,7 +4,8 @@ from getLogLikelihood import getLogLikelihood
 
 def MStep(gamma, X):
     # Maximization step of the EM Algorithm
-    #
+    #the function MStep that performs the maximization step of the EM algorithm. i.e. π̂j^new , μ̂j^new, Σ̂j^new :
+    # s.439
     # INPUT:
     # gamma          : NxK matrix of responsibilities for N datapoints and K Gaussians.
     # X              : Input data (NxD matrix for N datapoints of dimension D).

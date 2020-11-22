@@ -4,7 +4,8 @@ from getLogLikelihood import getLogLikelihood
 
 def EStep(means, covariances, weights, X):
     # Expectation step of the EM Algorithm
-    #
+    #EStep that performs the expectation step of the EM algorithm, i.e. computes the responsibilities γ j (x n ):
+    #S.338
     # INPUT:
     # means          : Mean for each Gaussian KxD
     # weights        : Weight vector 1xK for K Gaussians

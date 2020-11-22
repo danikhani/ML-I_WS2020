@@ -1,7 +1,8 @@
 import numpy as np
 def getLogLikelihood(means, weights, covariances, X):
     # Log Likelihood estimation
-    #
+    #log-likelihood ln p(X|π, μ, Σ) of a mixture of Gaussian distributions with the signature
+    # s. 433
     # INPUT:
     # means          : Mean for each Gaussian KxD
     # weights        : Weight vector 1xK for K Gaussians
@@ -15,5 +16,6 @@ def getLogLikelihood(means, weights, covariances, X):
     # logLikelihood  : log-likelihood
 
     #####Insert your code here for subtask 6a#####
+
     return logLikelihood
 

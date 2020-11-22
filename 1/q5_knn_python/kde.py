@@ -1,7 +1,7 @@
 import numpy as np
 import math as mth
 
-#kernel density estimation method with a Gaussian kernel with standard deviation h
+#kernel density estimation method with a Gaussian kernel with standard deviation h (Seite 123 Bishop buch)
 def kde(samples, h):
     # compute density estimation from samples with KDE
     # Input
@@ -12,7 +12,8 @@ def kde(samples, h):
     pos = np.arange(-5, 5.0, 0.1)  # Returns a 100 dimensional vector
 
     n = samples.shape[0]
-    d = pos.shape[0]
+    #d = pos.shape[0]
+    d = 1
 
     temp_value = []
     for x in pos:
