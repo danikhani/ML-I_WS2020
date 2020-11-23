@@ -25,20 +25,20 @@ def EStep(means, covariances, weights, X):
     #####Insert your code here for subtask 6b#####
     D = X.shape[1]  # 2 dimension set of files
     N = X.shape[0]  # number of samples
-    K = 3  # number of Gausians
+    K = len(weights) # number of Gausians
 
     # book page 433 and 25 or slide part 5 slide 11
     i =0
-    gamma = np.zeros((275, 3))
+    gamma = np.zeros((N, 3))
     #gamma[3,2] = 25 # row 3 column 2 is 25
     #gamma[3,1] = 4
     #gamma [4,1]= 10
     #gamma[3,:] = gamma[3,:]/4
-    while i <= N - 1:
+    while i < N:
         x_n = X[i, :]
         j = 0
         pz = 0
-        while j <= K - 1:
+        while j < K:
             w = weights[j]
             c = covariances[:, :, j]
             m = means[j]

@@ -21,14 +21,14 @@ def getLogLikelihood(means, weights, covariances, X):
     logLikelihood = 0
     D = X.shape[1] # 2 dimension set of files
     N = X.shape[0] # number of samples
-    K = 3 # number of Gausians
+    K = len(weights) # number of Gausians
     i = 0
     #book page 433 and 25 or slide part 5 slide 11
-    while i <= N-1:
+    while i < N:
         x_n = X[i, :]
         j = 0
         pz = 0
-        while j <= K-1:
+        while j < K:
             w = weights[j]
             c = covariances[:, :, j]
             m = means[j]
