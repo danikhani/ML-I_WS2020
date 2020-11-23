@@ -1,4 +1,6 @@
 import numpy as np
+import math as mth
+from scipy.spatial import distance
 def getLogLikelihood(means, weights, covariances, X):
     # Log Likelihood estimation
     #log-likelihood ln p(X|π, μ, Σ) of a mixture of Gaussian distributions with the signature
@@ -16,6 +18,26 @@ def getLogLikelihood(means, weights, covariances, X):
     # logLikelihood  : log-likelihood
 
     #####Insert your code here for subtask 6a#####
-
+    logLikelihood = 0
+    D = X.shape[1] # 2 dimension set of files
+    N = X.shape[0] # number of samples
+    K = 3 # number of Gausians
+    i = 0
+    #book page 433 and 25 or slide part 5 slide 11
+    while i <= N-1:
+        x_n = X[i, :]
+        j = 0
+        pz = 0
+        while j <= K-1:
+            w = weights[j]
+            c = covariances[:, :, j]
+            m = means[j]
+            # source https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.mahalanobis.html
+            dd = distance.mahalanobis(x_n, m, c)
+            pp = w*(1 / (pow(2 * mth.pi, D / 2) * pow(np.linalg.det(c), 0.5)) * mth.exp(-dd))
+            pz = pz + pp
+            j +=1
+        logLikelihood = logLikelihood + np.log(pz)
+        i += 1
     return logLikelihood
 

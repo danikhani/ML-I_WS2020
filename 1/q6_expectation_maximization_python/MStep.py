@@ -15,10 +15,16 @@ def MStep(gamma, X):
     # K is number of Gaussians
     #
     # OUTPUT:
-    # logLikelihood  : Log-likelihood (a scalar).
-    # means          : Mean for each gaussian (KxD).
-    # weights        : Vector of weights of each gaussian (1xK).
-    # covariances    : Covariance matrices for each component(DxDxK).
 
-    #####Insert your code here for subtask 6c#####
+    nk = 1 / np.sum(gamma)
+
+    # means          : Mean for each gaussian (KxD).
+    means = 1/nk * sum(gamma*X)
+
+    # weights        : Vector of weights of each gaussian (1xK).
+    weights = nk/X.shape[0]
+    # covariances    : Covariance matrices for each component(DxDxK).
+    covariances = 1/nk * sum(gamma*X)
+    # logLikelihood  : Log-likelihood (a scalar).
+    logLikelihood = getLogLikelihood(means, weights, covariances, X)
     return weights, means, covariances, logLikelihood
