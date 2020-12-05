@@ -3,6 +3,7 @@ from linclass import linclass
 from leastSquares import leastSquares
 from plot_ import plot_
 
+
 train = {}
 test = {}
 ## Load the data
@@ -12,6 +13,7 @@ test.update({'data': np.loadtxt('lc_test_data.dat')})
 test.update({'label': np.loadtxt('lc_test_label.dat')})
 
 ## Q1 a) Train the classifier using the training dataset
+
 weight, bias = leastSquares(train['data'], train['label'])
 
 ## Q1 b) Evaluate the classifier on the training dataset
