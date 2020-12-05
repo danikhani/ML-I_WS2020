@@ -8,7 +8,7 @@ def knn(samples, k):
     #  k          : number of neighbors
     # Output
     #  estDensity : estimated density in the range of [-5, 5]
-    pos = np.arange(-5, 5.0, 0.1)  # Returns a 100 dimensional vector
+    pos = np.arange(-5, 5.0, 0.1)  # Returns a 1 dimensional vector with 100 enetries
 
     n = samples.shape[0]
 

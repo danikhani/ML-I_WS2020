@@ -34,6 +34,7 @@ def getLogLikelihood(means, weights, covariances, X):
             m = means[j]
             # source https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.mahalanobis.html
             dd = distance.mahalanobis(x_n, m, c)
+            dd2 = 0.5 * (x_n - m) @ np.linalg.inv(c) @ (x_n - m)
             pp = w*(1 / (pow(2 * mth.pi, D / 2) * pow(np.linalg.det(c), 0.5)) * mth.exp(-dd))
             pz = pz + pp
             j +=1

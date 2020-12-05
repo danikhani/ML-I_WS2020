@@ -29,11 +29,8 @@ def EStep(means, covariances, weights, X):
 
     # book page 433 and 25 or slide part 5 slide 11
     i =0
-    gamma = np.zeros((N, 3))
-    #gamma[3,2] = 25 # row 3 column 2 is 25
-    #gamma[3,1] = 4
-    #gamma [4,1]= 10
-    #gamma[3,:] = gamma[3,:]/4
+    gamma = np.zeros((N, K))
+
     while i < N:
         x_n = X[i, :]
         j = 0

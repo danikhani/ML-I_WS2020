@@ -15,16 +15,38 @@ def MStep(gamma, X):
     # K is number of Gaussians
     #
     # OUTPUT:
+    D = X.shape[1]  # 2 dimension set of files
+    N = X.shape[0]  # number of samples
+    K = gamma.shape[1]  # number of Gausians
 
-    nk = 1 / np.sum(gamma)
+    nk = gamma.sum(axis=0)
 
     # means          : Mean for each gaussian (KxD).
-    means = 1/nk * sum(gamma*X)
+    means = np.zeros((K, D))
+    means[0, :] = np.dot(gamma[:,0],X)/nk[0]
+    means[1, :] = np.dot(gamma[:, 1], X)/nk[1]
+    means[2, :] = np.dot(gamma[:, 2], X)/nk[2]
 
     # weights        : Vector of weights of each gaussian (1xK).
-    weights = nk/X.shape[0]
+    weights = nk/nk.sum()
+
+
+
+
+
     # covariances    : Covariance matrices for each component(DxDxK).
-    covariances = 1/nk * sum(gamma*X)
+    covariances = np.zeros((D, D, K))
+    sdsd = np.size(covariances, 2)
+    j = 0
+    while j < K:
+        i = 0
+        sum = 0
+        while i < 3:
+            sum += gamma[i, j] * np.outer((X[i] - means[j]), (X[i] - means[j]))  # Transpose? Dimensions?
+            i += 1
+        covariances[:, :, j] = sum * 1 / nk[j]
+        j += 1
+
     # logLikelihood  : Log-likelihood (a scalar).
     logLikelihood = getLogLikelihood(means, weights, covariances, X)
     return weights, means, covariances, logLikelihood

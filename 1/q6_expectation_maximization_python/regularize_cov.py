@@ -11,12 +11,14 @@ def regularize_cov(covariance, epsilon):
     #
     # OUTPUT:
     # regularized_cov: reconstructed matrix
+    K = np.size(covariance, 2)
+    D = np.size(covariance, 1)
 
     #####Insert your code here for subtask 6d#####
-    covariances = np.zeros((2, 2, 3))
-    covariances[:, :, 0] = np.identity(2)
-    covariances[:, :, 1] = np.identity(2)
-    covariances[:, :, 2] = np.identity(2)
+    covariances = np.zeros((D, D, K))
+    for i in range(K):
+        covariances[:, :, i] = np.identity(2)
+
     regularized_cov = covariance + epsilon * covariances
 
     return regularized_cov
