@@ -1,10 +1,17 @@
 # Machine Learning Exercise
-
-## Getting Started
-
 All the exercise of the lecture Machine Learning WS2020/2021.
 
-## Subjects:
+## Prerequesities
+
+Use conda or your prefered package manager to install the required packages.
+```bash
+conda create -n ml_ws20 python=3.6
+conda activate ml_ws20
+pip install -r requirements.txt
+```
+## Getting Started
+Every folder handels a different ML subject. Each one of them can be runned seperetly from the other folders.
+### Subjects:
 
 * Exercise 1: Probability Density Estimation
 * Exercise 2: Linear Discriminants, SVMs
